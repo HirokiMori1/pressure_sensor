@@ -19,16 +19,16 @@ if __name__ == '__main__':
     while(True):
         data = s.readline().rstrip("\n").split(",")
         #print(data)
-        temperature = float(data[0])
-        pressure = float(data[1])
-        humidity = float(data[2])
+        temperature = data[0]
+        pressure = data[1]
+        humidity = data[2]
         
         print(temperature, pressure, humidity)
         print(time.time() - t1)
 
         with open('data.csv','a') as f:
             writer = csv.writer(f,lineterminator="\n")
-            writer.writerow([str(time.time()-t1),str(pressure),str(temperature),str(humidity)])
+            writer.writerow([str(time.time()-t1),pressure,temperature,humidity])
 
         if(time.time() - t1 > 3600):
             break
